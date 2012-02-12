@@ -7,8 +7,6 @@
             } else {
                 include("pages/error.php");
             }
-                
-        
         ?>
     </div>                
 </div>            

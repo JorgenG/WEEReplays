@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <?php 
-    include('includes/sessionhandler.php');
     if(!empty($_GET["page"])) {
             $page = $_GET["page"];
     } else {
             $page = "home";
     }	
+    include('includes/sessionhandler.php');
 ?>
 <html>
     

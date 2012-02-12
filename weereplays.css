@@ -1,9 +1,7 @@
-html, body, ol, ul, li, pre, code, address,
+html, body, p, h1, h2, h3, h4, h5, h6, ol, ul, li, pre, code, address,
 variable, form, fieldset, blockquote {
     padding: 0;
     margin: 0;
-    font-size: 100%;
-    font-weight: normal;
 }
 
 ol {
@@ -26,9 +24,11 @@ body {
     background-image: url(img/bg3.png);
     background-repeat: repeat;
     background-color: #CCC;
+    scrollbar-base-color: #FFF;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 10px;
     margin-left: 10px;
 }
 
@@ -50,8 +50,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 div.visiblediv {
-    border: 2px solid #000;
-    border-radius: 8px;
+    border: 1px solid #000;
     background: rgba(255,255,255,0.8);
 }
 
@@ -65,34 +64,35 @@ div.visiblediv {
 
 #navcontwrapper {
     float: left;
-    width: 700px;
+    width: 760px;
 }
 
 #nav {
     float: left;
     margin-top: 10px;
     height: 40px;
-    width: 700px;
+    width: 760px;
 }
 
 #content {
     margin-top: 10px;
     float: left;
-    width: 700px;
+    width: 760px;
+    height: 680px;
+    overflow: auto;
 }
 
 #user {
     margin-top: 10px;
-    margin-left: 13px;
+    margin-left: 12px;
     float: left;
     height: 300px;
-    width: 247px;
+    width: 187px;
 }
 
 #footer {
     float: left;
     margin-top: 10px;
-    margin-bottom: 100px;
     width: 960px;
     height: 60px;
 }
@@ -137,6 +137,7 @@ div.visiblediv {
 }
 
 p {
+    margin-left: 10px;
     color: #000;
 }
 

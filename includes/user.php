@@ -5,26 +5,40 @@
             echo "<p>You are currently logged in as: $userid </p>";
             echo "<a href='index.php?page=logout'>Logout</a>";
         } else {
-                echo "<form name='login' method='post' action='index.php'>";
-                echo "<table class='logintable'><tr><td colspan='2'>";
-                echo "<p>Login below</p></td></tr><tr>";
-                echo "<td class='logincolumn'>";
-                echo "<p>Username:</p>";
-                echo "</td>";
-                echo "<td class='logincolumn'>";
-                echo "<input type='text' size='12' maxlength='12' name='username'>";
-                echo "</td>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td class='logincolumn'>";
-                echo "<p>Password</p>";
-                echo "</td>";
-                echo "<td class='logincolumn'>";
-                echo "<input type='password' size='12' maxlength=12' name='password'>";
-                echo "</td>";
-                echo "</tr>";
-                echo "</table>";
-                echo "</form>";
+            echo "  <form name='login' method='post' action='index.php?page=login'>
+                        <table class='logintable'>
+                            <tr>
+                                <td colspan='2'>
+                                    <h3>Login below</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='logincolumn'>
+                                    <p>Username:</p>
+                                </td>
+                                <td class='logincolumn'>
+                                    <input type='text' size='12' maxlength='12' name='username'>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='logincolumn'>
+                                    <p>Password:</p>
+                                </td>
+                                <td class='logincolumn'>
+                                    <input type='password' size='12' maxlength=12' name='password'>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td align='right'>
+                                    <input type='submit' value='Login' name='submit'>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                ";
         }
     ?>
 </div>
