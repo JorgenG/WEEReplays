@@ -84,28 +84,17 @@
         else
         {
             $factionTeam2 = "PACT";
-        }        
+        }       
         
         if($nrOfPlayers != "Other")
         {
             $nrOfPlayersTeam1 = intval(substr($nrOfPlayers, 0, 1));
             $nrOfPlayersTeam2 = intval(substr($nrOfPlayers, 2, 1));
-            
-            $pivot = 132;
-            
-            for($i = 0; $i < $nrOfPlayersTeam1; $i++) 
-            {
-                $nextplayer = trim(substr($data, $pivot, 30));
-                if(playerExist($nextplayer)) {
-                    
-                }
-                $pivot = $pivot + 160;
-            }
-            for($i = 0; $i < $nrOfPlayersTeam2; $i++)
-            {
-                $nextplayer = trim(substr($data, $pivot, 30)) . ";";
-                $pivot = $pivot + 160;
-            }
+        }
+        else 
+        {
+            $nrOfPlayersTeam1 = -1;
+            $nrOfPlayersTeam2 = -1;
         }
         
         $dateformat = "Y-m-d G:H:i";
@@ -114,23 +103,45 @@
                 "', '" . $map . "', '" . $title . "', '" . $description . "', '" .
                 $factionTeam1 . "', '" . $factionTeam2 . "', '" . $nrOfPlayersTeam1 . "', '" .
                 $nrOfPlayersTeam2 . "', '" . $sqldata . "', '" . date($dateformat) . "')";
-        mysql_query($query) or die(mysql_error());        
+        mysql_query($query) or die(mysql_error());   
+        $replayid = mysql_insert_id();
+                
+        if($nrOfPlayers != "Other")
+        {            
+            $pivot = 132;            
+            for($i = 0; $i < $nrOfPlayersTeam1; $i++) 
+            {
+                $nextplayer = trim(substr($data, $pivot, 30));
+                addPlayerToReplay($nextplayer, $replayid, $factionTeam1);
+                $pivot = $pivot + 160;
+            }
+            for($i = 0; $i < $nrOfPlayersTeam2; $i++)
+            {
+                $nextplayer = trim(substr($data, $pivot, 30));
+                addPlayerToReplay($nextplayer, $replayid, $factionTeam2);
+                $pivot = $pivot + 160;
+            }
+        }  
     }
     
-    function playerExist($playername) {
+    function addPlayerToReplay($playername, $replayid, $faction) {
         include('includes/db.php');
         
-        $query = "select * from players";
+        $query = "select * from players where playerName = '" . $playername . "'";
         $result = mysql_query($query);
         
         if(mysql_num_rows($result) > 0) 
         {
-            return true; 
+            $row = mysql_fetch_array($result);
+            $playerid = $row['playerId'];
         } 
         else 
         {
-            return false;
-        }          
+            mysql_query("insert into players values ('', '" . $playername . "')") or die(mysql_error());
+            $playerid = mysql_insert_id();
+        }  
+        mysql_query("insert into players_has_replays values('" . $playerid . "', '" .
+                $replayid . "', '" . $faction . "')") or die(mysql_error());
     }
     
     function login($username, $password) 
@@ -142,7 +153,7 @@
         
         while($line = mysql_fetch_array($result)) 
         {
-            if($line['password'] == md5($password)) 
+            if($line['upassword'] == md5($password)) 
             {
                 $_SESSION['valid_user'] = $line['username'];
                 $_SESSION['userid'] = $line['userId'];

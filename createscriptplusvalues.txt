@@ -1,0 +1,158 @@
+CREATE TABLE GameModes (
+  gameModeId INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  name VARCHAR(45)  NOT NULL    ,
+PRIMARY KEY(gameModeId));
+
+
+
+
+CREATE TABLE Maps (
+  mapId INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  mapName VARCHAR(45)  NOT NULL  ,
+  mapSize INTEGER UNSIGNED  NULL    ,
+PRIMARY KEY(mapId));
+
+
+
+
+CREATE TABLE Players (
+  playerId INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  playername VARCHAR(45)  NOT NULL    ,
+PRIMARY KEY(playerId));
+
+
+
+
+CREATE TABLE AccessLevels (
+  accessLevel INTEGER UNSIGNED  NOT NULL  ,
+  accessName VARCHAR(45)  NOT NULL    ,
+PRIMARY KEY(accessLevel));
+
+
+
+
+CREATE TABLE Users (
+  userId INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  AccessLevels_accessLevel INTEGER UNSIGNED  NOT NULL  ,
+  username VARCHAR(20)  NOT NULL  ,
+  email VARCHAR(255)  NOT NULL  ,
+  password VARCHAR(255)  NOT NULL    ,
+PRIMARY KEY(userId)  ,
+INDEX Users_AccessLevel(AccessLevels_accessLevel),
+  FOREIGN KEY(AccessLevels_accessLevel)
+    REFERENCES AccessLevels(accessLevel);
+
+
+CREATE INDEX IFK_Rel_05 ON Users (AccessLevels_accessLevel);
+
+
+CREATE TABLE Replays (
+  replayId INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  GameModes_gameModeId INTEGER UNSIGNED  NOT NULL  ,
+  Users_userId INTEGER UNSIGNED  NOT NULL  ,
+  Maps_mapId INTEGER UNSIGNED  NOT NULL  ,
+  title VARCHAR(255)  NOT NULL  ,
+  description TEXT  NOT NULL  ,
+  factionTeam1 VARCHAR(20)  NOT NULL  ,
+  factionTeam2 VARCHAR(20)  NOT NULL  ,
+  nrOfPlayersTeam1 INTEGER UNSIGNED  NOT NULL  ,
+  nrOfPlayersTeam2 INTEGER UNSIGNED  NOT NULL  ,
+  replayData MEDIUMBLOB  NOT NULL  ,
+  uploadDate DATETIME  NOT NULL    ,
+PRIMARY KEY(replayId)  ,
+INDEX Replays_UserId(Users_userId)  ,
+INDEX Replays_MapId(Maps_mapId)  ,
+INDEX Replays_GameModeId(GameModes_gameModeId),
+  FOREIGN KEY(Users_userId)
+    REFERENCES Users(userId),
+  FOREIGN KEY(Maps_mapId)
+    REFERENCES Maps(mapId),
+  FOREIGN KEY(GameModes_gameModeId)
+    REFERENCES GameModes(gameModeId);
+
+
+CREATE INDEX IFK_UsrHasReplay ON Replays (Users_userId);
+CREATE INDEX IFK_Rel_08 ON Replays (Maps_mapId);
+CREATE INDEX IFK_Rel_11 ON Replays (GameModes_gameModeId);
+
+
+CREATE TABLE FeaturedReplays (
+  featuredId INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  Replays_replayId INTEGER UNSIGNED  NOT NULL    ,
+PRIMARY KEY(featuredId)  ,
+INDEX FeaturedReplays_FKIndex1(Replays_replayId),
+  FOREIGN KEY(Replays_replayId)
+    REFERENCES Replays(replayId);
+
+
+CREATE INDEX IFK_Rel_02 ON FeaturedReplays (Replays_replayId);
+
+
+CREATE TABLE Ratings (
+  ratingId INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  Users_userId INTEGER UNSIGNED  NOT NULL  ,
+  Replays_replayId INTEGER UNSIGNED  NOT NULL  ,
+  rating INTEGER UNSIGNED  NULL    ,
+PRIMARY KEY(ratingId)  ,
+INDEX ReplayRatings_FKIndex1(Users_userId)  ,
+INDEX ReplayRatings_FKIndex2(Replays_replayId),
+  FOREIGN KEY(Users_userId)
+    REFERENCES Users(userId),
+  FOREIGN KEY(Replays_replayId)
+    REFERENCES Replays(replayId);
+
+
+CREATE INDEX IFK_Rel_06 ON Ratings (Users_userId);
+CREATE INDEX IFK_Rel_07 ON Ratings (Replays_replayId);
+
+
+CREATE TABLE Comments (
+  commentId INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
+  Users_userId INTEGER UNSIGNED  NOT NULL  ,
+  Replays_replayId INTEGER UNSIGNED  NOT NULL  ,
+  comment MEDIUMTEXT  NOT NULL  ,
+  title INTEGER UNSIGNED  NULL    ,
+PRIMARY KEY(commentId)  ,
+INDEX Comments_FKIndex1(Replays_replayId)  ,
+INDEX Comments_FKIndex2(Users_userId),
+  FOREIGN KEY(Replays_replayId)
+    REFERENCES Replays(replayId),
+  FOREIGN KEY(Users_userId)
+    REFERENCES Users(userId);
+
+
+CREATE INDEX IFK_Rel_03 ON Comments (Replays_replayId);
+CREATE INDEX IFK_Rel_04 ON Comments (Users_userId);
+
+
+CREATE TABLE Players_has_Replays (
+  Players_playerId INTEGER UNSIGNED  NOT NULL  ,
+  Replays_replayId INTEGER UNSIGNED  NOT NULL  ,
+  playerTeam INT  NOT NULL    ,
+PRIMARY KEY(Players_playerId, Replays_replayId)  ,
+INDEX Players_has_Replays_FKIndex1(Players_playerId)  ,
+INDEX Players_has_Replays_FKIndex2(Replays_replayId),
+  FOREIGN KEY(Players_playerId)
+    REFERENCES Players(playerId),
+  FOREIGN KEY(Replays_replayId)
+    REFERENCES Replays(replayId);
+
+
+CREATE INDEX IFK_Rel_10 ON Players_has_Replays (Players_playerId);
+CREATE INDEX IFK_Rel_11 ON Players_has_Replays (Replays_replayId);
+
+
+INSERT into AccessLevels VALUES
+('5', 'User'),
+('10', 'Moderator'),
+('20', 'Administrator');
+
+INSERT into Maps VALUES
+('', 'Hell\'s Highway', '1'),
+('', 'Airfield', '2'),
+('', 'Joint Strike', '3'),
+('', 'Three Mile Island', '4');
+
+INSERT into Modes VALUES
+('', 'Destruction'),
+('', 'Time');
