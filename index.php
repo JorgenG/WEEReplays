@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <?php 
-    if(!empty($_GET["page"])) {
-            $page = $_GET["page"];
-    } else {
+    if(isset($_GET['page'])) 
+    {
+            $page = $_GET['page'];
+    } 
+    else 
+    {
             $page = "home";
     }	
     include('includes/sessionhandler.php');
+    include('includes/db.php');
+    include('includes/functions.php');
 ?>
 <html>
     

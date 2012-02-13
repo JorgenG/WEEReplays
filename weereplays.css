@@ -32,14 +32,24 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 10px;
 }
 
-/*
- * Main wrapper
-*/
+div.visiblediv {
+    border: 1px solid #000;
+    background: rgba(255,255,255,0.8);
+}
+
+/************************
+ * Main wrapper         *
+ ************************/
 #wrapper {
     width: 980px;
     margin: 0 auto;
     text-align: left;	
 }
+
+
+/************************
+ * DIV BOXES SETTINGS   *
+ ************************/
 
 #login {
     position: fixed;
@@ -47,11 +57,6 @@ h1, h2, h3, h4, h5, h6 {
     top: 0px;
     width: 220px;
     height: 100px;
-}
-
-div.visiblediv {
-    border: 1px solid #000;
-    background: rgba(255,255,255,0.8);
 }
 
 #header {	
@@ -101,9 +106,9 @@ div.visiblediv {
     text-align: center;
 }
 
-/*
- * Menu settings
-*/
+/************************
+ * Menu settings        *
+ ************************/
 
 #nav ul{
     list-style: none;
@@ -136,8 +141,53 @@ div.visiblediv {
     color: #000
 }
 
+
+/**************************
+ * PARAGRAPH SETTINGS     *
+ **************************/
 p {
     margin-left: 10px;
     color: #000;
 }
 
+p.loginerror {
+    color: red;
+    font-style: italic;
+}
+
+label {
+    margin-left: 10px;
+}
+
+a {
+    margin-left: 10px;
+}
+
+
+/**************************
+ * TABLE SETTINGS         *
+ **************************/
+td.formlabel {
+    text-align: right;
+}
+
+td.forminput {
+    text-align: left;
+}
+
+
+
+/**************************
+ * OTHER SETTINGS         *
+ **************************/
+input.textinput {
+    width: 90px;
+}
+
+textarea {
+    resize: none;
+}
+
+input.registerforminput {
+    width: 140px;
+}

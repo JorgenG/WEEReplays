@@ -1,10 +1,13 @@
 <div class="visiblediv" id="user">
     <?php 
-        if(isset($_SESSION['valid_user'])) {
+        if(isset($_SESSION['valid_user'])) 
+        {
             $userid = $_SESSION['valid_user'];
             echo "<p>You are currently logged in as: $userid </p>";
             echo "<a href='index.php?page=logout'>Logout</a>";
-        } else {
+        } 
+        else 
+        {
             echo "  <form name='login' method='post' action='index.php?page=login'>
                         <table class='logintable'>
                             <tr>
@@ -17,7 +20,7 @@
                                     <p>Username:</p>
                                 </td>
                                 <td class='logincolumn'>
-                                    <input type='text' size='12' maxlength='12' name='username'>
+                                    <input class='textinput' type='text' name='username'>
                                 </td>
                             </tr>
                             <tr>
@@ -25,7 +28,7 @@
                                     <p>Password:</p>
                                 </td>
                                 <td class='logincolumn'>
-                                    <input type='password' size='12' maxlength=12' name='password'>
+                                    <input class='textinput' type='password' name='password'>
                                 </td>
                             </tr>
                             <tr>
@@ -38,6 +41,7 @@
                             </tr>
                         </table>
                     </form>
+                    <p>If you dont have an account, <a href='index.php?page=register'>click here</a> to register.</p>
                 ";
         }
     ?>

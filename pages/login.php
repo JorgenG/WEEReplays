@@ -1,16 +1,28 @@
 <?php
 
-if (isset($_SESSION['valid_user'])) {
+if (isset($_SESSION['valid_user'])) 
+{
     echo "<h3>You are already logged in!</h3>";
-} else {
-    if(isset($_POST['username'])) {
+} 
+else 
+{
+    if(isset($_POST['username'])) 
+    {
         $username = $_POST['username'];
         $password = $_POST['password'];
         
-        if($username == "Test" && $password == "ape") {
-            $_SESSION['valid_user'] = $username;
-            echo "Logged in!";
+        login($username, $password);
+        
+        if(isset($_SESSION['valid_user'])) 
+        {
+            echo "<h3>Successfully logged in</h3>";   
+            echo "Access level is: " . $_SESSION['access'];
+        } 
+        else 
+        {
+            echo "<h3>Could not login. Are you sure username and/or password is correct?</h3>";
         }
+        
     }
 }
 ?>
