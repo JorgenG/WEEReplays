@@ -2,6 +2,13 @@ html, body, p, h1, h2, h3, h4, h5, h6, ol, ul, li, pre, code, address,
 variable, form, fieldset, blockquote {
     padding: 0;
     margin: 0;
+    font-family: arial;
+    
+}
+
+html, body, p, ol, ul, li, pre, code, address,
+variable, form, fieldset, blockquote {
+    font-size: 14px;
 }
 
 ol {
@@ -34,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 
 div.visiblediv {
     border: 1px solid #000;
-    background: rgba(255,255,255,0.8);
+    background: #EEE;
     border-radius: 6px;
 }
 
@@ -78,7 +85,7 @@ div.visiblediv {
     float: left;
     margin-top: 10px;
     margin-bottom: 0px;
-    height: 40px;
+    height: 35px;
     width: 960px;
     border: none;
 }
@@ -120,33 +127,35 @@ div.visiblediv {
     margin: 0;
     padding: 7px 0;
     font-weight: bold;
+    font-family: arial;
     text-align: center;
     white-space: nowrap;
+    font-size: 14px;
+    
 }
 
 #nav ul li{
     display: inline;
     margin: 0 3px;
+    margin-bottom: 10px;
 }
 
 #nav ul a{
     text-decoration: none;
     padding: 0 0 3px;
-    color: #FFF;
-    opacity: 0.8;
+    color: #EEE;
 }
 
 #nav ul a#current{
     border-color: #FFF;
-    border-bottom: 11px solid;
-    color: #FFF;
-    opacity: 0.8;
+    border-bottom: 9px solid;
+    color: #EEE;
 }
 
 #nav ul a:hover{
     border-color: #FFF;
     border-bottom: 11px solid;
-    color: #FFF;
+    color: #EEE;
     opacity: 0.4;
 }
 
@@ -157,6 +166,7 @@ div.visiblediv {
 p {
     margin-left: 10px;
     color: #000;
+    font-size: 14px;
 }
 
 p.loginerror {

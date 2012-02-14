@@ -9,25 +9,25 @@
     }
     echo "  <table class='replaytable'>
             <tr>                
-                <th width='200'>Title</th>
-                <th width='100'>Author</th>
-                <th width='140'>Map</th>
-                <th width='70'>Players</th>
-                <th width='100'>Mode</th>
-                <th width='150'>Upload Date</th>
-                <th width='60'>Download</th>
+                <th width='200'><p class='tableheader'>Title</p></th>
+                <th width='100'><p class='tableheader'>Author</p></th>
+                <th width='140'><p class='tableheader'>Map</p></th>
+                <th width='70'><p class='tableheader'>Players</p></th>
+                <th width='100'><p class='tableheader'>Mode</p></th>
+                <th width='150'><p class='tableheader'>Upload Date</p></th>
+                <th width='60'><p class='tableheader'>Download</p></th>
             </tr>";
     $result = getReplaysPage($page);
     
     while($line = mysql_fetch_array($result))
     {
         echo "<tr>" .
-                "<td class='replaystd'>" . $line['title'] . "</td>" .
-                "<td class='replaystd'>" . $line['username'] . "</td>" .
-                "<td class='replaystd'>" . $line['mapName'] . "</td>" .
-                "<td class='replaystd'>" . $line['nrOfPlayersTeam1'] . "v" . $line['nrOfPlayersTeam2'] . "</td>" .
-                "<td class='replaystd'>" . $line['gameModeName'] . "</td>" .
-                "<td class='replaystd'>" . $line['uploadDate'] . "</td>" .
+                "<td class='replaystd'><p class='tablecell'>" . $line['title'] . "</p></td>" .
+                "<td class='replaystd'><p class='tablecell'>" . $line['username'] . "</p></td>" .
+                "<td class='replaystd'><p class='tablecell'>" . $line['mapName'] . "</p></td>" .
+                "<td class='replaystd'><p class='tablecell'>" . $line['nrOfPlayersTeam1'] . "v" . $line['nrOfPlayersTeam2'] . "</p></td>" .
+                "<td class='replaystd'><p class='tablecell'>" . $line['gameModeName'] . "</p></td>" .
+                "<td class='replaystd'><p class='tablecell'>" . $line['uploadDate'] . "</p></td>" .
                 "<td class='replaystd'><a href='index.php?page=replay&id=" . $line['replayId'] . "'>Details</a></td>" .
              "<tr>";
     }

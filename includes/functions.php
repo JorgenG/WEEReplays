@@ -97,7 +97,7 @@
             $nrOfPlayersTeam2 = -1;
         }
         
-        $dateformat = "Y-m-d G:H:i";
+        $dateformat = "Y-m-d H:i:s";
         
         $query = "insert into Replays values('', '" . $mode . "', '" . $_SESSION['userid'] . 
                 "', '" . $map . "', '" . $title . "', '" . $description . "', '" .

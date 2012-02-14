@@ -1,6 +1,6 @@
 CREATE TABLE GameModes (
   gameModeId INTEGER UNSIGNED  NOT NULL   AUTO_INCREMENT,
-  name VARCHAR(45)  NOT NULL    ,
+  gameModeName VARCHAR(45)  NOT NULL    ,
 PRIMARY KEY(gameModeId));
 
 
@@ -140,7 +140,6 @@ INDEX Players_has_Replays_FKIndex2(Replays_replayId),
     REFERENCES Replays(replayId)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION);
-
 
 
 INSERT into AccessLevels VALUES

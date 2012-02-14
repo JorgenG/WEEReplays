@@ -87,7 +87,7 @@ echo "
     
     while($mode = mysql_fetch_array($modeResult))
     {
-        echo "<option value='" . $mode['gameModeId'] . "'>" . $mode['name'] . "</option>";
+        echo "<option value='" . $mode['gameModeId'] . "'>" . $mode['gameModeName'] . "</option>";
     }
     
     echo           "</select>
