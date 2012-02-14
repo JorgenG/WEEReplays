@@ -112,10 +112,13 @@ div.visiblediv {
     margin-top: 10px;
     width: 960px;
     height: 60px;
+    background: none;
+    border: none;
 }
 
 #footer p{
     text-align: center;
+    color: #FFF;
 }
 
 /************************
@@ -172,6 +175,10 @@ p {
 p.loginerror {
     color: red;
     font-style: italic;
+}
+
+p.nextpagelinks {
+    text-align: right;
 }
 
 label {

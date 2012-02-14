@@ -102,7 +102,7 @@
         $query = "insert into Replays values('', '" . $mode . "', '" . $_SESSION['userid'] . 
                 "', '" . $map . "', '" . $title . "', '" . $description . "', '" .
                 $factionTeam1 . "', '" . $factionTeam2 . "', '" . $nrOfPlayersTeam1 . "', '" .
-                $nrOfPlayersTeam2 . "', '" . $sqldata . "', '" . date($dateformat) . "')";
+                $nrOfPlayersTeam2 . "', '" . $sqldata . "', '" . date($dateformat) . "', '0')";
         mysql_query($query) or die(mysql_error());   
         $replayid = mysql_insert_id();
                 
@@ -162,15 +162,34 @@
         }
     }
     
-    function getReplayData() {
+    function getReplayData() 
+    {
         
     }
     
-    function getReplaysPage($page) {
+    function echoReplayData($replayid) 
+    {
         include('includes/db.php');
         
-        $lowlimit = $page * 30;
-        $maxlimit = $lowlimit + 30;
+        $query = "select replayData from Replays where replayId = '" . $replayid . "'";
+        $result = mysql_query($query);
+        
+        if(mysql_num_rows($result) == 1) 
+        {
+            $line = mysql_fetch_array($result);
+            echo $line['replayData'];
+            
+            $query = "update Replays SET downloadCounter = downloadCounter + 1 where replayId = '" . $replayid . "'";
+            mysql_query($query);
+        }
+    }
+    
+    function getReplaysPage($fromentry) 
+    {
+        include('includes/db.php');
+        
+        $lowlimit = $fromentry;
+        $maxlimit = $fromentry + 20;
         
         $query = "select 
                     replayId, 
@@ -199,6 +218,15 @@
         
         $result = mysql_query($query) or die(mysql_error());
         return $result;
+    }
+    
+    function countReplays()
+    {
+        $query = "select COUNT(*) as nrOfReplays from Replays";
+        $result = mysql_query($query);
+        
+        $line = mysql_fetch_array($result);
+        return $line['nrOfReplays'];        
     }
     
 ?>

@@ -1,12 +1,15 @@
 <?php    
-    if(isset($_POST['from']))
+    if(isset($_GET['from']))
     {
-        $page = $_POST['from'];
+        $fromentry = $_GET['from'];
     } 
     else
     {
-        $page = 0;
+        $fromentry = 0;
     }
+    
+    $nrOfReplays = countReplays();
+    
     echo "  <table class='replaytable'>
             <tr>                
                 <th width='200'><p class='tableheader'>Title</p></th>
@@ -17,7 +20,7 @@
                 <th width='150'><p class='tableheader'>Upload Date</p></th>
                 <th width='60'><p class='tableheader'>Download</p></th>
             </tr>";
-    $result = getReplaysPage($page);
+    $result = getReplaysPage($fromentry);
     
     while($line = mysql_fetch_array($result))
     {
@@ -33,5 +36,15 @@
     }
 
     echo "  </table>";
+    echo "<p class='nextpagelinks'>";
+    
+    for($page = 1; $nrOfReplays - $fromentry > 20; $page++)
+    {
+        $pivot = $fromentry + 20;
+        echo "<a href='index.php?page=replays&from=" . $pivot . "'>" . $page . "</a> ";
+    }
+        
+    
+    echo "</p>";
     
 ?>
