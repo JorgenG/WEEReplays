@@ -17,7 +17,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="weereplays.css">
         <meta charset="utf-8">
-        <title>RPG - Play by post</title>
+        <title>W:EE Replays - Your storage for sharing and storing W:EE replays</title>
     </head>
     <body>
         <div id='wrapper'>

@@ -162,4 +162,43 @@
         }
     }
     
+    function getReplayData() {
+        
+    }
+    
+    function getReplaysPage($page) {
+        include('includes/db.php');
+        
+        $lowlimit = $page * 30;
+        $maxlimit = $lowlimit + 30;
+        
+        $query = "select 
+                    replayId, 
+                    gameModeName, 
+                    mapName, 
+                    username,  
+                    title,
+                    factionTeam1,
+                    factionTeam2,
+                    nrOfPlayersTeam1,
+                    nrOfPlayersTeam2,
+                    uploadDate
+                from 
+                    Replays, 
+                    Users, 
+                    GameModes, 
+                    Maps
+                where
+                    Users_userId = userId AND
+                    GameModes_gameModeId = gameModeId AND
+                    Maps_mapId = mapId
+                order by
+                    uploadDate desc
+                limit
+                    " . $lowlimit . ", " . $maxlimit;
+        
+        $result = mysql_query($query) or die(mysql_error());
+        return $result;
+    }
+    
 ?>

@@ -35,13 +35,14 @@ h1, h2, h3, h4, h5, h6 {
 div.visiblediv {
     border: 1px solid #000;
     background: rgba(255,255,255,0.8);
+    border-radius: 6px;
 }
 
 /************************
  * Main wrapper         *
  ************************/
 #wrapper {
-    width: 980px;
+    width: 1180px;
     margin: 0 auto;
     text-align: left;	
 }
@@ -69,26 +70,30 @@ div.visiblediv {
 
 #navcontwrapper {
     float: left;
-    width: 760px;
+    width: 960px;
 }
 
 #nav {
+    background: rgba(255,255,255,0.0);
     float: left;
     margin-top: 10px;
+    margin-bottom: 0px;
     height: 40px;
-    width: 760px;
+    width: 960px;
+    border: none;
 }
 
 #content {
-    margin-top: 10px;
+    margin-top: 0px;
+    border-top: none;
     float: left;
-    width: 760px;
+    width: 960px;
     height: 680px;
     overflow: auto;
 }
 
 #user {
-    margin-top: 10px;
+    margin-top: 49px;
     margin-left: 12px;
     float: left;
     height: 300px;
@@ -127,18 +132,22 @@ div.visiblediv {
 #nav ul a{
     text-decoration: none;
     padding: 0 0 3px;
-    border-bottom: 4px solid #000;
-    color: #000;
+    color: #FFF;
+    opacity: 0.8;
 }
 
 #nav ul a#current{
-    border-color: #33A;
-    color: #33A;
+    border-color: #FFF;
+    border-bottom: 11px solid;
+    color: #FFF;
+    opacity: 0.8;
 }
 
 #nav ul a:hover{
-    border-color: #33A;
-    color: #000
+    border-color: #FFF;
+    border-bottom: 11px solid;
+    color: #FFF;
+    opacity: 0.4;
 }
 
 
@@ -173,6 +182,19 @@ td.formlabel {
 
 td.forminput {
     text-align: left;
+}
+
+td.replaystd {
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
+    border-radius: 5px;
+}
+
+table.replaytable {
+    margin-top: 20px;
+    margin-left: 20px;
+    border: 4px solid #000;
+    border-radius: 5px;
 }
 
 
