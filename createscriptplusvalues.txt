@@ -54,7 +54,8 @@ CREATE TABLE Replays (
   nrOfPlayersTeam1 INTEGER UNSIGNED  NOT NULL  ,
   nrOfPlayersTeam2 INTEGER UNSIGNED  NOT NULL  ,
   replayData MEDIUMBLOB  NOT NULL  ,
-  uploadDate DATETIME  NOT NULL    ,
+  uploadDate DATETIME  NOT NULL  ,
+  downloadCounter INTEGER UNSIGNED  NULL DEFAULT 0   ,
 PRIMARY KEY(replayId)  ,
 INDEX Replays_UserId(Users_userId)  ,
 INDEX Replays_MapId(Maps_mapId)  ,
@@ -140,6 +141,10 @@ INDEX Players_has_Replays_FKIndex2(Replays_replayId),
     REFERENCES Replays(replayId)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION);
+
+
+
+
 
 
 INSERT into AccessLevels VALUES

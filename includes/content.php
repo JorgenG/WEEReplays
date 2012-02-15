@@ -1,5 +1,6 @@
 <div id="navcontwrapper">                
-    <?php include('includes/nav.php'); ?>                
+    <?php include('includes/nav.php'); ?>
+    <?php include('includes/user.php'); ?>
     <div class='visiblediv' id='content'> 
         <?php 
             if(file_exists("pages/$page.php"))
@@ -13,4 +14,3 @@
         ?>
     </div>                
 </div>            
-<?php include('includes/user.php'); ?>

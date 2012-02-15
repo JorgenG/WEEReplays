@@ -229,4 +229,59 @@
         return $line['nrOfReplays'];        
     }
     
+    function echoMenuItem($curPage, $displayName, $pageName, $notForLoggedInUsers)
+    {
+        
+        if($curPage == $pageName)
+        {
+            if($notForLoggedInUsers && isset($_SESSION['valid_user'])){
+                
+            }
+            else 
+            {
+                echo "<li><a id='current' href='index.php?page=".$pageName."'>".$displayName."</a></li>";
+            } 
+        }                            
+        else
+        {
+            if($notForLoggedInUsers && isset($_SESSION['valid_user'])){
+                
+            }
+            else 
+            {
+                echo "<li><a href='index.php?page=".$pageName."'>".$displayName."</a></li>";
+            }                
+        }
+    }
+    
+    function echoMenuItemForUsersAboveLevel($curPage, $displayName, $pageName, $reqLevel) 
+    {
+        if(isset($_SESSION['access']) && $_SESSION['access'] >= $reqLevel)
+        {
+            if($curPage == $pageName)
+            {
+                echo "<li><a id='current' href='index.php?page=".$pageName."'>".$displayName."</a></li>";
+            }                            
+            else
+            {
+                echo "<li><a href='index.php?page=".$pageName."'>".$displayName."</a></li>";
+            }
+        }
+    }
+    
+    function echoMenuItemForUsersBelowLevel($curPage, $displayName, $pageName, $maxLevel) 
+    {
+        if(isset($_SESSION['access']) && $_SESSION['access'] <= $maxLevel)
+        {
+            if($curPage == $pageName)
+            {
+                echo "<li><a id='current' href='index.php?page=".$pageName."'>".$displayName."</a></li>";
+            }                            
+            else
+            {
+                echo "<li><a href='index.php?page=".$pageName."'>".$displayName."</a></li>";
+            }
+        }
+    }
+    
 ?>

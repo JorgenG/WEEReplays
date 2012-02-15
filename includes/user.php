@@ -3,12 +3,19 @@
         if(isset($_SESSION['valid_user'])) 
         {
             $userid = $_SESSION['valid_user'];
-            echo "<p>You are currently logged in as: $userid </p>";
-            echo "<a href='index.php?page=logout'>Logout</a>";
+            echo "<p id='userinfo'><strong>Logged in as:</strong> $userid <a href='index.php?page=logout'>Logout</a></p>";
+            echo "";
         } 
         else 
         {
-            echo "  <form name='login' method='post' action='index.php?page=login'>
+            echo "
+                <form name='login' method='post' action='index.php?page=login'>
+                <p id='logintext'><strong>User: <input class='textinput' type='text' name='username'>
+                Pass: <input class='textinput' type='password' name='password'></strong>  
+                <input id='loginbutton' type='submit' value='Login' name='submit'></p>
+                </form>";
+            
+            /*echo "  <form name='login' method='post' action='index.php?page=login'>
                         <table class='logintable'>
                             <tr>
                                 <td colspan='2'>
@@ -42,7 +49,7 @@
                         </table>
                     </form>
                     <p>If you dont have an account, <a href='index.php?page=register'>click here</a> to register.</p>
-                ";
+                ";*/
         }
     ?>
 </div>

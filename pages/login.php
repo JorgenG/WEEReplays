@@ -6,23 +6,14 @@ if (isset($_SESSION['valid_user']))
 } 
 else 
 {
-    if(isset($_POST['username'])) 
+    if(isset($_SESSION['valid_user'])) 
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        
-        login($username, $password);
-        
-        if(isset($_SESSION['valid_user'])) 
-        {
-            echo "<h3>Successfully logged in</h3>";   
-            echo "Access level is: " . $_SESSION['access'];
-        } 
-        else 
-        {
-            echo "<h3>Could not login. Are you sure username and/or password is correct?</h3>";
-        }
-        
-    }
+        echo "<h3>Successfully logged in</h3>";   
+        echo "Access level is: " . $_SESSION['access'];
+    } 
+    else 
+    {
+        echo "<h3>Could not login. Are you sure username and/or password is correct?</h3>";
+    }    
 }
 ?>
