@@ -8,6 +8,7 @@
     {
             $page = "home";
     }	
+    include('includes/constants.php');
     include('includes/functions.php'); 
     include('includes/sessionhandler.php');
     include('includes/db.php');    

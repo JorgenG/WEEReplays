@@ -1,0 +1,3 @@
+<?php
+    $replaysPrPage = 12;
+?>

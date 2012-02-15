@@ -151,15 +151,13 @@
         $query = "select * from " . $dbusertable . " where username = '" . trim($username) . "'";
         $result = mysql_query($query) or die(mysql_error());
         
-        while($line = mysql_fetch_array($result)) 
+        $line = mysql_fetch_array($result);        
+        if($line['upassword'] == md5($password)) 
         {
-            if($line['upassword'] == md5($password)) 
-            {
-                $_SESSION['valid_user'] = $line['username'];
-                $_SESSION['userid'] = $line['userId'];
-                $_SESSION['access'] = $line['AccessLevels_accessLevel'];
-            }
-        }
+            $_SESSION['valid_user'] = $line['username'];
+            $_SESSION['userid'] = $line['userId'];
+            $_SESSION['access'] = $line['AccessLevels_accessLevel'];
+        }        
     }
     
     function getReplayData() 
@@ -186,10 +184,8 @@
     
     function getReplaysPage($fromentry) 
     {
+        include('includes/constants.php');
         include('includes/db.php');
-        
-        $lowlimit = $fromentry;
-        $maxlimit = $fromentry + 20;
         
         $query = "select 
                     replayId, 
@@ -201,7 +197,8 @@
                     factionTeam2,
                     nrOfPlayersTeam1,
                     nrOfPlayersTeam2,
-                    uploadDate
+                    uploadDate,
+                    downloadCounter
                 from 
                     Replays, 
                     Users, 
@@ -214,7 +211,7 @@
                 order by
                     uploadDate desc
                 limit
-                    " . $lowlimit . ", " . $maxlimit;
+                    " . $fromentry . ", " . $replaysPrPage;
         
         $result = mysql_query($query) or die(mysql_error());
         return $result;
