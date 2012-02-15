@@ -1,11 +1,5 @@
 <?php
 
-if (isset($_SESSION['valid_user'])) 
-{
-    echo "<h3>You are already logged in!</h3>";
-} 
-else 
-{
     if(isset($_SESSION['valid_user'])) 
     {
         echo "<h3>Successfully logged in</h3>";   
@@ -13,7 +7,8 @@ else
     } 
     else 
     {
-        echo "<h3>Could not login. Are you sure username and/or password is correct?</h3>";
+        echo "<h3>Could not login</h3>
+            <p>Are you sure username and/or password is correct?</p>";
     }    
-}
+
 ?>

@@ -4,7 +4,7 @@
                     echoMenuItem($page, "Home", "home", false);
                     echoMenuItem($page, "Replays", "replays", false);
                     echoMenuItem($page, "Add Replay", "addreplay", false);
-                    echoMenuItem($page, "Register", "register", true);
+                    echoMenuItem($page, "New User", "register", true);
                     echoMenuItemForUsersAboveLevel($page, "User", "user", 0);
                 ?>
         

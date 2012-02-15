@@ -30,7 +30,7 @@ body {
     margin: 0px;
     /*background-image: url(img/bg3.png);*/
     background-repeat: repeat;
-    background-color: #111;
+    background-color: #000;
     scrollbar-base-color: #FFF;
 }
 
@@ -70,7 +70,7 @@ div.visiblediv {
 #header {	
     margin-top: 10px;
     height: 100px;
-    background:url('img/testbg.jpg') #220000;
+    background:url('img/testbg3.jpg') #220000;
     margin-bottom: 0px;
     width: 958px;
 }
@@ -172,6 +172,10 @@ p {
     margin-left: 10px;
     color: #222;
     font-size: 14px;
+}
+
+p.paragraphtext {
+    margin-bottom: 10px;
 }
 
 p.loginerror {
