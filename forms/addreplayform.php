@@ -1,12 +1,8 @@
 <?php
-echo "  
+echo "  <h2>Enter information for replay</h2>
     <form action='index.php?page=upload' method=post enctype='multipart/form-data'>
         <table class='registertable'>
-            <tr>
-                <td colspan='3'>
-                    <h3>Enter information for replay</h3>
-                </td>
-            </tr>
+            
             <tr>
                 <td class='formlabel' align='right'>
                     <label for='title'>Title:</label>

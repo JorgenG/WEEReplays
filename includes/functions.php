@@ -112,19 +112,19 @@
             for($i = 0; $i < $nrOfPlayersTeam1; $i++) 
             {
                 $nextplayer = trim(substr($data, $pivot, 30));
-                addPlayerToReplay($nextplayer, $replayid, $factionTeam1);
+                addPlayerToReplay($nextplayer, $replayid, 1);
                 $pivot = $pivot + 160;
             }
             for($i = 0; $i < $nrOfPlayersTeam2; $i++)
             {
                 $nextplayer = trim(substr($data, $pivot, 30));
-                addPlayerToReplay($nextplayer, $replayid, $factionTeam2);
+                addPlayerToReplay($nextplayer, $replayid, 2);
                 $pivot = $pivot + 160;
             }
         }  
     }
     
-    function addPlayerToReplay($playername, $replayid, $faction) {
+    function addPlayerToReplay($playername, $replayid, $teamNumber) {
         include('includes/db.php');
         
         $query = "select * from players where playerName = '" . $playername . "'";
@@ -141,7 +141,7 @@
             $playerid = mysql_insert_id();
         }  
         mysql_query("insert into players_has_replays values('" . $playerid . "', '" .
-                $replayid . "', '" . $faction . "')") or die(mysql_error());
+                $replayid . "', '" . $teamNumber . "')") or die(mysql_error());
     }
     
     function login($username, $password) 
@@ -160,9 +160,48 @@
         }        
     }
     
-    function getReplayData() 
+    function getReplayData($replayId) 
     {
+        include('includes/db.php');
         
+        $query = "select 
+                    replayId, 
+                    gameModeName, 
+                    mapName, 
+                    username,  
+                    title,
+                    description,
+                    factionTeam1,
+                    factionTeam2,
+                    uploadDate,
+                    downloadCounter
+                from 
+                    Replays, 
+                    Users, 
+                    GameModes, 
+                    Maps
+                where
+                    Users_userId = userId AND
+                    GameModes_gameModeId = gameModeId AND
+                    Maps_mapId = mapId AND
+                    replayId = " . $replayId;
+        $result = mysql_query($query) or die(mysql_error());
+        return $result;        
+    }
+    
+    function getPlayersOnTeam($replayId, $teamNumber) {
+        include('includes/db.php');
+        $query = "select
+                    playername
+                  from
+                    Players,
+                    Players_has_Replays
+                  where
+                    Players.playerId = Players_has_Replays.Players_playerId AND
+                    Players_has_Replays.playerTeam = ". $teamNumber .
+                    " AND Players_has_Replays.Replays_replayId = " . $replayId;
+        $result = mysql_query($query) or die(mysql_error());
+        return $result;
     }
     
     function echoReplayData($replayid) 

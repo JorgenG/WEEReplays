@@ -8,7 +8,8 @@
         $fromentry = 0;
     }    
     
-    echo "  <table class='replaytable'>
+    echo "  <h2>Displaying replays</h2>
+            <table class='replaytable'>
             <tr>                
                 <th width='30'><p class='tableheader'>ID</p></th>
                 <th width='200'><p class='tableheader'>Title</p></th>

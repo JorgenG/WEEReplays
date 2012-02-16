@@ -81,7 +81,7 @@ div.visiblediv {
 }
 
 #nav {
-    background: rgba(255,255,255,0.0);
+    background: rgba(255,255,255,0.0);    
     float: left;
     margin-top: 10px;
     margin-bottom: 0px;
@@ -194,6 +194,21 @@ p.nextpagelinks {
     text-align: left;
 }
 
+p.replayheader {
+    font-weight: bolder;
+    font-size: 16px;
+    text-align: right;
+}
+
+p.paragraphtext {
+    margin-left: 10px;
+}
+
+p.replaytext {
+    font-size: 14px;
+    font-style: italic;
+}
+
 
 #logintext {
     font-size: 11px;
@@ -244,6 +259,34 @@ tr.replayrow:hover {
 table.replaytable {
     margin-top: 20px;
     margin-left: 20px;
+    
+    border: 2px solid #222;
+    border-radius: 5px;
+}
+
+table.replaydatatable td {
+    vertical-align: top;
+    word-break: break-all;
+    padding-top: 10px;
+}
+
+table.replaydatatable p {
+    margin-left: 10px;
+    text-align: left;
+}
+
+#NATO {
+    color: blue;
+}
+
+#PACT {
+    color: red;
+}
+
+table.replaydatatable {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     border: 2px solid #222;
     border-radius: 5px;
 }
