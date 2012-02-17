@@ -12,13 +12,13 @@
             <table class='replaytable'>
             <tr>                
                 <th width='30'><p class='tableheader'>ID</p></th>
-                <th width='200'><p class='tableheader'>Title</p></th>
+                <th width='300'><p class='tableheader'>Title</p></th>
                 <th width='100'><p class='tableheader'>Uploaded by</p></th>
                 <th width='115'><p class='tableheader'>Map</p></th>
                 <th width='120'><p class='tableheader'>Mode</p></th>
-                <th width='150'><p class='tableheader'>Upload Date</p></th>
+                <th width='60'><p class='tableheader'>Rating</p></th>
                 <th width='60'><p class='tableheader'>Info</p></th>
-                <th width='60'><p class='tableheader'># DL's</p></th>
+                <th width='60'><p class='tableheader'>Downloads</p></th>
             </tr>";
     $result = getReplaysPage($fromentry);
     $nrOfReplays = countReplays();
@@ -31,7 +31,7 @@
                 "<td class='replaystd'><p class='tablecell'>" . $line['username'] . "</p></td>" .
                 "<td class='replaystd'><p class='tablecell'>" . $line['mapName'] . "</p></td>" .
                 "<td class='replaystd'><p class='tablecell'>" . $line['nrOfPlayersTeam1'] . "v" . $line['nrOfPlayersTeam2'] . " - " . $line['gameModeName'] . "</p></td>" .
-                "<td class='replaystd'><p class='tablecell'>" . $line['uploadDate'] . "</p></td>" .
+                "<td class='replaystd'><p class='tablecell'>" . round($line['average'] * 10) / 10 . " (". $line['ratings']. ")</p></td>" .
                 "<td class='replaystd'><a href='index.php?page=replay&id=" . $line['replayId'] . "'>Details</a></td>" .
                 "<td class='replaystd'><p class='tablecell'>" . $line['downloadCounter'] . "</a></td>" .
              "<tr>";

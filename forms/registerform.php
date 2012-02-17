@@ -1,6 +1,6 @@
 <?php   
     global $error;
-    echo "  <h3>Register new user:</h3><br>
+    echo "  <h2>Register new user:</h2>
             <form name='register' method='post' action='index.php?page=register'>
                 <table class='registertable'>
                     <tr>

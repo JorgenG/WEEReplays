@@ -189,6 +189,34 @@
         return $result;        
     }
     
+    function addRatingForReplay($replayId, $rating, $userId)
+    {
+        include('includes/db.php');
+        
+        if(!userVotedBefore($replayId, $userId)) 
+        {
+            
+            $query = "insert into Ratings values ('', '" . $userId . "', '" . $replayId . "', '" . $rating . "')"; 
+            mysql_query($query) or die(mysql_error());
+        }
+    }
+    
+    function userVotedBefore($replayId, $userId)
+    {
+        include('includes/db.php');
+        
+        $query = "select * from ratings where Users_userId = '" . $userId . "' AND Replays_replayId = '" . $replayId . "'";
+        $result = mysql_query($query) or die(mysql_error());
+        if(mysql_num_rows($result) == 0) 
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    
     function getPlayersOnTeam($replayId, $teamNumber) {
         include('includes/db.php');
         $query = "select
@@ -237,16 +265,20 @@
                     nrOfPlayersTeam1,
                     nrOfPlayersTeam2,
                     uploadDate,
-                    downloadCounter
+                    downloadCounter,
+                    AVG(rating) as average,
+                    COUNT(ratingId) as ratings
                 from 
-                    Replays, 
+                    Replays left join Ratings on Replays_replayId = replayId, 
                     Users, 
                     GameModes, 
                     Maps
                 where
-                    Users_userId = userId AND
+                    Replays.Users_userId = Users.userId AND
                     GameModes_gameModeId = gameModeId AND
                     Maps_mapId = mapId
+                group by
+                    replayId
                 order by
                     uploadDate desc
                 limit
@@ -317,6 +349,33 @@
             {
                 echo "<li><a href='index.php?page=".$pageName."'>".$displayName."</a></li>";
             }
+        }
+    }
+    
+    function updatePassword($oldpassword, $newpassword, $newpasswordconfirm) 
+    {
+        include('includes/db.php');
+        if($newpassword == $newpasswordconfirm && strlen($newpassword) > 5 && strlen($newpassword) < 21)
+        {
+            $query = "select * from " . $dbusertable . " where userId = '" . $_SESSION['userid'] . "'";
+            $result = mysql_query($query) or die(mysql_error());
+
+            $line = mysql_fetch_array($result);        
+            if($line['upassword'] == md5($oldpassword)) 
+            {
+                $query = "update " . $dbusertable . " set upassword = '" . md5($newpassword) . 
+                        "' where userId = '" . $_SESSION['userid'] . "'";
+                mysql_query($query) or die(mysql_error());
+                return true;
+            } 
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
         }
     }
     

@@ -21,30 +21,6 @@
             fclose($tempfile); 
             
             addReplay($title, $description, $factions, $nrOfPlayers, $map, $mode, $data);
-            
-            
-            
-            
-                
-            
-            //$file_name = "2145.wargamerpl";
-            
-
-            //header("Content-Type: application/octet-stream");
-            //header("Content-Disposition: Attachment; filename=$file_name");
-            //header("Content-Length: $filesize");
-
-            // $my_data is the string that holds your data
-            
-
-            
-            
-
-            //$query = "INSERT INTO replays VALUES ('', 'TITLE', 'DESCRIPTION','" . $_SESSION['userid'] . "', '". $data ."', 'nvp', '3v3', 'BrokenTomato;Diana;Tom:Turbo;Kano;Bano', '2012-02-13 14:52:20', 'MAPNAME', 'DESTRUCTION//TIME - MODE')";
-            //mysql_query($query) or die(mysql_error());
-            //echo fread($tempfile, $filesize);
-
-                            
         } 
     } 
     else 

@@ -1,5 +1,6 @@
 <?php
 echo "  <h2>Enter information for replay</h2>
+    <div id='addreplayform'>
     <form action='index.php?page=upload' method=post enctype='multipart/form-data'>
         <table class='registertable'>
             
@@ -61,7 +62,8 @@ echo "  <h2>Enter information for replay</h2>
                     <label for='map'>Map:</label>
                 </td>
                 <td class='forminput'>
-                    <select name='map'>";
+                    <select name='map'>
+            ";
     $mapResult = getMaps();
 
     while($map = mysql_fetch_array($mapResult)) 
@@ -101,7 +103,6 @@ echo "  <h2>Enter information for replay</h2>
 
         <br />
 
-
-        
-    </form>";
+        </form>
+    </div>";
 ?>

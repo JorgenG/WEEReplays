@@ -5,7 +5,7 @@
     } 
     else 
     {
-        echo "<h1>You must be logged in to upload replays.</h1>";
+        echo "<h2>You must be logged in to upload replays.</h2>";
     }
     
 ?>

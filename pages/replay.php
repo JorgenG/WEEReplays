@@ -1,8 +1,17 @@
 <?php
     if(isset($_GET['id']))
     {        
+        if(isset($_POST['rating'])) 
+        {
+            if(isset($_SESSION['valid_user']))
+            {
+                addRatingForReplay($_GET['id'], $_POST['rating'], $_SESSION['userid']);
+            }
+        }
         $result = getReplayData($_GET['id']);        
         $data = mysql_fetch_array($result);
+        
+        $_SESSION['dlticket'] = $_GET['id'];
         
         $playersTeam1 = getPlayersOnTeam($_GET['id'], 1);
         $playersTeam2 = getPlayersOnTeam($_GET['id'], 2);
@@ -30,6 +39,15 @@
                         </td>
                         <td colspan='2' height='70'><p class='replaytext'>";
         $pageData .= $data['description'];
+        
+        $pageData .= "</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <p class='replayheader'>Uploaded by:</p>
+                        </td>
+                        <td><p class='replaytext'>";
+        $pageData .= $data['username'];
         
         $pageData .= "</p></td>
                     </tr>
@@ -87,8 +105,24 @@
         $pageData .= "</p></td>
                 <tr class='tabledatarow'>
                     <td><p class='replayheader'>Download:</p></td>
-                    <td colspan='2'><a href='download.php?replay=" . $_GET['id'] . "'>Download</a></td>
-                        </tr>
+                    <td><a href='download.php?replay=" . $_GET['id'] . "'>Download</a></td>";
+        if(isset($_SESSION['valid_user']) || !userVotedBefore($_GET['id'], $_SESSION['userid']))
+        {
+            $pageData .= "<td>
+                        <form action='index.php?page=replay&id=" . $_GET['id'] . 
+                            "' method=post enctype='multipart/form-data'>
+                            <select name='rating'>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>                                
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                            </select>
+                            <input type='submit' value='Rate'/>
+                        </form>
+                        </td>";
+        }
+        $pageData .=   "</tr>
                         </table>";
         
         echo $pageData;

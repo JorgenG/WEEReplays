@@ -23,9 +23,11 @@
     </head>
     <body>
         <div id='wrapper'>
-            <?php include('includes/header.php'); ?>
-            <?php include('includes/content.php'); ?>            
-            <?php include('includes/footer.php'); ?>				
+            <?php 
+				include('includes/header.php'); 
+				include('includes/content.php');           
+				include('includes/footer.php'); 
+			?>				
         </div>
     </body>
 </html>
