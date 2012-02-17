@@ -127,7 +127,7 @@
     function addPlayerToReplay($playername, $replayid, $teamNumber) {
         include('includes/db.php');
         
-        $query = "select * from players where playerName = '" . $playername . "'";
+        $query = "select * from Players where playerName = '" . $playername . "'";
         $result = mysql_query($query);
         
         if(mysql_num_rows($result) > 0) 
@@ -137,10 +137,10 @@
         } 
         else 
         {
-            mysql_query("insert into players values ('', '" . $playername . "')") or die(mysql_error());
+            mysql_query("insert into Players values ('', '" . $playername . "')") or die(mysql_error());
             $playerid = mysql_insert_id();
         }  
-        mysql_query("insert into players_has_replays values('" . $playerid . "', '" .
+        mysql_query("insert into Players_has_replays values('" . $playerid . "', '" .
                 $replayid . "', '" . $teamNumber . "')") or die(mysql_error());
     }
     
@@ -205,7 +205,7 @@
     {
         include('includes/db.php');
         
-        $query = "select * from ratings where Users_userId = '" . $userId . "' AND Replays_replayId = '" . $replayId . "'";
+        $query = "select * from Ratings where Users_userId = '" . $userId . "' AND Replays_replayId = '" . $replayId . "'";
         $result = mysql_query($query) or die(mysql_error());
         if(mysql_num_rows($result) == 0) 
         {
