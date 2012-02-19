@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<?php     
+<?php       
     if(isset($_GET['page'])) 
     {
             $page = $_GET['page'];
@@ -13,21 +12,23 @@
     include('includes/sessionhandler.php');
     include('includes/db.php');    
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
 <html>
     
     <head>
         <link rel="stylesheet" type="text/css" href="weereplays.css">
         <link REL="SHORTCUT ICON" HREF="favicon.ico">
-        <meta charset="utf-8">
-        <title>W:EE Replays - Your storage for sharing and storing W:EE replays</title>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Wargame: European Escalation replays</title>
     </head>
     <body>
         <div id='wrapper'>
             <?php 
-				include('includes/header.php'); 
-				include('includes/content.php');           
-				include('includes/footer.php'); 
-			?>				
+                include('includes/header.php'); 
+                include('includes/content.php');           
+                include('includes/footer.php'); 
+            ?>				
         </div>
     </body>
 </html>

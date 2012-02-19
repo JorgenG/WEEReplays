@@ -21,6 +21,7 @@
             fclose($tempfile); 
             
             addReplay($title, $description, $factions, $nrOfPlayers, $map, $mode, $data);
+            echo"<h2>Upload successful</h2>";
         } 
     } 
     else 

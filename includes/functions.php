@@ -4,7 +4,7 @@
     {
         include('includes/db.php');
         
-        $query = "select * from " . $dbusertable . " where username = '" . trim($username) . "'";
+        $query = "select * from " . $dbusertable . " where username = '" . mysql_real_escape_string(trim($username)) . "'";
         $result = mysql_query($query) or die(mysql_error());
         
         if(mysql_num_rows($result) > 0) 
@@ -21,7 +21,7 @@
     {
         include('includes/db.php');
         
-        $query = "select * from " . $dbusertable . " where email = '" . trim($email) . "'";
+        $query = "select * from " . $dbusertable . " where email = '" . mysql_real_escape_string(trim($email)) . "'";
         $result = mysql_query($query) or die(mysql_error());
         
         if(mysql_num_rows($result) > 0) 
@@ -38,7 +38,7 @@
     {
         include('includes/db.php');
         
-        $query = "insert into " . $dbusertable . " values('', '5', '" . $username . "', '" . $email . "', '" . md5($password) . "')";
+        $query = "insert into " . $dbusertable . " values('', '5', '" . mysql_real_escape_string(trim($username)) . "', '" . mysql_real_escape_string(trim($email)) . "', '" . md5($password) . "')";
         $result = mysql_query($query) or die(mysql_error());
     }
     
@@ -66,7 +66,7 @@
     {
         include('includes/db.php');
         
-        $sqldata = addslashes($data);
+        $sqldata = mysql_real_escape_string($data);
         
         if(substr($factions, 0, 1) == 'n') 
         {
@@ -100,9 +100,9 @@
         $dateformat = "Y-m-d H:i:s";
         
         $query = "insert into Replays values('', '" . $mode . "', '" . $_SESSION['userid'] . 
-                "', '" . $map . "', '" . $title . "', '" . $description . "', '" .
+                "', '" . $map . "', '" . mysql_real_escape_string($title) . "', '" . mysql_real_escape_string($description) . "', '" .
                 $factionTeam1 . "', '" . $factionTeam2 . "', '" . $nrOfPlayersTeam1 . "', '" .
-                $nrOfPlayersTeam2 . "', '" . $sqldata . "', '" . date($dateformat) . "', '0')";
+                $nrOfPlayersTeam2 . "', '" . $sqldata . "', '" . date($dateformat) . "', '0', '0')";
         mysql_query($query) or die(mysql_error());   
         $replayid = mysql_insert_id();
                 
@@ -127,7 +127,7 @@
     function addPlayerToReplay($playername, $replayid, $teamNumber) {
         include('includes/db.php');
         
-        $query = "select * from Players where playerName = '" . $playername . "'";
+        $query = "select * from Players where playerName = '" . mysql_real_escape_string($playername) . "'";
         $result = mysql_query($query);
         
         if(mysql_num_rows($result) > 0) 
@@ -137,10 +137,10 @@
         } 
         else 
         {
-            mysql_query("insert into Players values ('', '" . $playername . "')") or die(mysql_error());
+            mysql_query("insert into Players values ('', '" . mysql_real_escape_string($playername) . "')") or die(mysql_error());
             $playerid = mysql_insert_id();
         }  
-        mysql_query("insert into Players_has_replays values('" . $playerid . "', '" .
+        mysql_query("insert into Players_has_Replays values('" . mysql_real_escape_string($playerid) . "', '" .
                 $replayid . "', '" . $teamNumber . "')") or die(mysql_error());
     }
     
@@ -148,7 +148,7 @@
     {
         include('includes/db.php');
         
-        $query = "select * from " . $dbusertable . " where username = '" . trim($username) . "'";
+        $query = "select * from " . $dbusertable . " where username = '" . mysql_real_escape_string(trim($username)) . "'";
         $result = mysql_query($query) or die(mysql_error());
         
         $line = mysql_fetch_array($result);        
@@ -184,7 +184,7 @@
                     Users_userId = userId AND
                     GameModes_gameModeId = gameModeId AND
                     Maps_mapId = mapId AND
-                    replayId = " . $replayId;
+                    replayId = " . mysql_real_escape_string($replayId);
         $result = mysql_query($query) or die(mysql_error());
         return $result;        
     }
@@ -196,7 +196,7 @@
         if(!userVotedBefore($replayId, $userId)) 
         {
             
-            $query = "insert into Ratings values ('', '" . $userId . "', '" . $replayId . "', '" . $rating . "')"; 
+            $query = "insert into Ratings values ('', '" . $userId . "', '" . mysql_real_escape_string($replayId) . "', '" . mysql_real_escape_string($rating) . "')"; 
             mysql_query($query) or die(mysql_error());
         }
     }
@@ -205,7 +205,7 @@
     {
         include('includes/db.php');
         
-        $query = "select * from Ratings where Users_userId = '" . $userId . "' AND Replays_replayId = '" . $replayId . "'";
+        $query = "select * from Ratings where Users_userId = '" . $userId . "' AND Replays_replayId = '" . mysql_real_escape_string($replayId) . "'";
         $result = mysql_query($query) or die(mysql_error());
         if(mysql_num_rows($result) == 0) 
         {
@@ -236,7 +236,7 @@
     {
         include('includes/db.php');
         
-        $query = "select replayData from Replays where replayId = '" . $replayid . "'";
+        $query = "select replayData from Replays where replayId = '" . mysql_real_escape_string($replayid) . "'";
         $result = mysql_query($query);
         
         if(mysql_num_rows($result) == 1) 
@@ -244,7 +244,7 @@
             $line = mysql_fetch_array($result);
             echo $line['replayData'];
             
-            $query = "update Replays SET downloadCounter = downloadCounter + 1 where replayId = '" . $replayid . "'";
+            $query = "update Replays SET downloadCounter = downloadCounter + 1 where replayId = '" . mysql_real_escape_string($replayid) . "'";
             mysql_query($query);
         }
     }
@@ -276,13 +276,14 @@
                 where
                     Replays.Users_userId = Users.userId AND
                     GameModes_gameModeId = gameModeId AND
-                    Maps_mapId = mapId
+                    Maps_mapId = mapId AND
+                    isDeleted = 0
                 group by
                     replayId
                 order by
                     uploadDate desc
                 limit
-                    " . $fromentry . ", " . $replaysPrPage;
+                    " . mysql_real_escape_string($fromentry) . ", " . $replaysPrPage;
         
         $result = mysql_query($query) or die(mysql_error());
         return $result;
@@ -377,6 +378,26 @@
         {
             return false;
         }
+    }
+    
+    function addCommentForReplay($replayId, $comment) 
+    {
+        include('includes/db.php');
+        $dateformat = "Y-m-d H:i:s";
+        $query = "insert into Comments VALUES ('', '" . mysql_real_escape_string($_SESSION['userid']) . "', '" . 
+                mysql_real_escape_string($replayId) . "', '" . mysql_real_escape_string($comment) . "', '" . 
+                date($dateformat) ."')";
+        mysql_query($query) or die(mysql_error());
+    }
+    
+    function getCommentsForReplay($replayId)
+    {
+        include('includes/db.php');
+        
+        $query = "select username, comment, date from Comments LEFT JOIN Users ON Users_userId = userId WHERE Replays_replayId = '" . 
+                mysql_real_escape_string($replayId) . "'";
+        $result = mysql_query($query) or die(mysql_error());
+        return $result;
     }
     
 ?>

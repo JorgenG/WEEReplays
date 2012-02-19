@@ -1,4 +1,4 @@
-<?php
+<?php    
     session_start();
     if($page == 'logout') 
     {
@@ -10,6 +10,7 @@
     
     if($page == 'login' && isset($_POST['username'])) 
     {
+        
         $username = $_POST['username'];
         $password = $_POST['password'];
         

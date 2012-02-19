@@ -31,7 +31,6 @@ body {
     /*background-image: url(img/bg3.png);*/
     background-repeat: repeat;
     background-color: #222;
-    scrollbar-base-color: #FFF;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -130,6 +129,45 @@ div.visiblediv {
     color: #FFF;
 }
 
+#replaytable {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 915px;
+    border: 1px solid #222;
+    border-radius: 8px;
+}
+
+div.comment {
+    border: 1px solid #000;
+    width: 700px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+#replayinfo {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 700px;
+    border: 1px solid #222;
+    border-radius: 8px;
+}
+
+#addcomment {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 700px;
+    border: 1px solid #222;
+    border-radius: 8px;
+}
+
 /************************
  * Menu settings        *
  ************************/
@@ -213,9 +251,28 @@ p.paragraphtext {
 
 p.replaytext {
     font-size: 14px;
-    font-style: italic;
 }
 
+p.eugenquote {
+    margin-left: 10px;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+p.commentheader {
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+p.commenttext {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
 
 #logintext {
     font-size: 11px;
@@ -255,8 +312,7 @@ td.forminput {
 }
 
 td.replaystd {
-    border-top: 1px solid #222;
-    border-left: 1px solid #222;
+    
 }
 
 tr.replayrow:hover {
@@ -267,12 +323,12 @@ table.registertable {
     margin-top: 20px;
     margin-left: 20px;    
     border: 1px solid #000;
+    border-radius: 8px;
 }
 
 table.replaytable {
     margin-top: 20px;
-    margin-left: 20px;
-    
+    margin-left: 20px;    
     border: 1px solid #000;
 }
 
@@ -295,19 +351,11 @@ table.replaydatatable p {
     color: red;
 }
 
-table.replaydatatable {
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    
-    border: 1px solid #222;
-}
-
 table.changepasstable {
     margin-top: 20px;
     margin-left: 20px;
     border: 1px solid #222;
+    border-radius: 8px;
 }
 
 /**************************

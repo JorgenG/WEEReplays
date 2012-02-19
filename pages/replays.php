@@ -9,7 +9,8 @@
     }    
     
     echo "  <h2>Displaying replays</h2>
-            <table class='replaytable'>
+        <div id='replaytable'>
+            <table>
             <tr>                
                 <th width='30'><p class='tableheader'>ID</p></th>
                 <th width='300'><p class='tableheader'>Title</p></th>
@@ -64,6 +65,6 @@
     }
         
     
-    echo "</p></td></tr></table>";
+    echo "</p></td></tr></table></div>";
     
 ?>

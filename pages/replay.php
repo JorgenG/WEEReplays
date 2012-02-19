@@ -8,6 +8,15 @@
                 addRatingForReplay($_GET['id'], $_POST['rating'], $_SESSION['userid']);
             }
         }
+        
+        if(isset($_POST['comment']))
+        {
+            if(isset($_SESSION['valid_user']))
+            {
+                addCommentForReplay($_GET['id'], $_POST['comment']);
+            }
+        }
+        
         $result = getReplayData($_GET['id']);        
         $data = mysql_fetch_array($result);
         
@@ -17,11 +26,13 @@
         $playersTeam2 = getPlayersOnTeam($_GET['id'], 2);
         
         $pageData = "<h2>Replay information for replay ID: " . $data['replayId'] . 
-                "</h2><table class='replaydatatable'>
+                "</h2>
+                <div id='replayinfo'>
+                <table class='replaydatatable'>
                     <tr>
                         <th width='150'>
                         </th>
-                        <th colspan='2' width='500'>
+                        <th colspan='2' width='600'>
                         </th>
                     </tr>
                     <tr>
@@ -38,7 +49,7 @@
                         <p class='replayheader'>Description:</p>
                         </td>
                         <td colspan='2' height='70'><p class='replaytext'>";
-        $pageData .= $data['description'];
+        $pageData .= nl2br($data['description']);
         
         $pageData .= "</p></td>
                     </tr>
@@ -106,7 +117,7 @@
                 <tr class='tabledatarow'>
                     <td><p class='replayheader'>Download:</p></td>
                     <td><a href='download.php?replay=" . $_GET['id'] . "'>Download</a></td>";
-        if(isset($_SESSION['valid_user']) || !userVotedBefore($_GET['id'], $_SESSION['userid']))
+        if(isset($_SESSION['valid_user']) && !userVotedBefore($_GET['id'], $_SESSION['userid']))
         {
             $pageData .= "<td>
                         <form action='index.php?page=replay&id=" . $_GET['id'] . 
@@ -121,11 +132,59 @@
                             <input type='submit' value='Rate'/>
                         </form>
                         </td>";
+        } 
+        else
+        {
+            $pageData .= "<td><p>Log in to rate replays!</p></td>";
         }
         $pageData .=   "</tr>
-                        </table>";
+                        </table></div><h2>Add comment</h2>";
         
         echo $pageData;
+        
+        if(isset($_SESSION['valid_user'])) 
+        {
+            include('forms/addcommentform.php');
+        }
+        else
+        {
+            echo "  
+                    <div id='addcomment'>                        
+                            <table>
+                                <tr>
+                                    <td>You must be logged in to add a comment.</td>
+                                </tr>
+                            </table>
+                    </div>";
+        }
+        echo "<h2>Comments</h2>";
+        
+        $result = getCommentsForReplay($_GET['id']);
+        
+        while($line = mysql_fetch_array($result))
+        {
+            $commentData = "<div class='comment'>
+                            <table class='commenttable'>
+                                <tr>
+                                    <td class='commentheader'>
+                                        <p class='commentheader'>
+                                            Posted by ". $line['username'] .", ". $line['date'] .
+                                        "</p>
+                                    </td>
+                                </tr>
+                                <tr class='commentlabel'>
+                                    <td class='commentdescription'>
+                                        <p class='commenttext'>" .
+                                            nl2br($line['comment'])
+                                        . "</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>";
+            echo $commentData;
+        }        
+        
+        
     }
     else
     {

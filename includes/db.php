@@ -3,7 +3,7 @@
     $dbuser = 'root';
     $dbpassword = '';
     $dbname= 'weereplays';
-    $dbusertable = 'users';
+    $dbusertable = 'Users';
     
     mysql_connect($dbhost, $dbuser, $dbpassword);
     mysql_select_db($dbname);          
