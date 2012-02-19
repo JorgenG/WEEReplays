@@ -171,9 +171,12 @@
                                             Posted by ". $line['username'] .", ". $line['date'] .
                                         "</p>
                                     </td>
+                                    <td>
+                                        
+                                    </td>
                                 </tr>
                                 <tr class='commentlabel'>
-                                    <td class='commentdescription'>
+                                    <td class='commentdescription' colspan='2'>
                                         <p class='commenttext'>" .
                                             nl2br($line['comment'])
                                         . "</p>

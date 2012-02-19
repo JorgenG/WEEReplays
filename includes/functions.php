@@ -386,7 +386,7 @@
         $dateformat = "Y-m-d H:i:s";
         $query = "insert into Comments VALUES ('', '" . mysql_real_escape_string($_SESSION['userid']) . "', '" . 
                 mysql_real_escape_string($replayId) . "', '" . mysql_real_escape_string($comment) . "', '" . 
-                date($dateformat) ."')";
+                date($dateformat) ."', '0')";
         mysql_query($query) or die(mysql_error());
     }
     
@@ -394,10 +394,18 @@
     {
         include('includes/db.php');
         
-        $query = "select username, comment, date from Comments LEFT JOIN Users ON Users_userId = userId WHERE Replays_replayId = '" . 
-                mysql_real_escape_string($replayId) . "'";
+        $query = "select commentId, username, comment, date from Comments LEFT JOIN Users ON Users_userId = userId WHERE Replays_replayId = '" . 
+                mysql_real_escape_string($replayId) . "' AND isDeleted = '0'";
         $result = mysql_query($query) or die(mysql_error());
         return $result;
+    }
+    
+    function deleteComment($commentId)
+    {
+        include('includes/db.php');
+        
+        $query = "UPDATE Comments SET isDeleted = '1' WHERE commentId = '" . mysql_real_escape_string($commentId) . "' AND ";
+        mysql_query($query);
     }
     
 ?>
