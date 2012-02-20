@@ -178,6 +178,20 @@
         echo "<h2>Comments</h2>";
         
         $result = getCommentsForReplay($_GET['id']);
+        if(mysql_num_rows($result) == 0)
+        {
+            echo "<div class='pagecontentbox'>
+                            <table class='commenttable'>
+                                <tr>
+                                    <td class='commentheader'>
+                                        <p class='commentheader'>
+                                            No comments posted.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>";
+        }
         
         while($line = mysql_fetch_array($result))
         {
