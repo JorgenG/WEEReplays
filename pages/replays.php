@@ -9,14 +9,14 @@
     }    
     
     echo "  <h2>Displaying replays</h2>
-        <div id='replaytable'>
+        <div class='pagecontentbox' id='replaytable'>
             <table>
             <tr>                
                 <th width='30'><p class='tableheader'>ID</p></th>
-                <th width='300'><p class='tableheader'>Title</p></th>
-                <th width='100'><p class='tableheader'>Uploaded by</p></th>
-                <th width='115'><p class='tableheader'>Map</p></th>
-                <th width='120'><p class='tableheader'>Mode</p></th>
+                <th width='250'><p class='tableheader'>Title</p></th>
+                <th width='120'><p class='tableheader'>Uploaded by</p></th>
+                <th width='140'><p class='tableheader'>Map</p></th>
+                <th width='140'><p class='tableheader'>Mode</p></th>
                 <th width='60'><p class='tableheader'>Rating</p></th>
                 <th width='60'><p class='tableheader'>Info</p></th>
                 <th width='60'><p class='tableheader'>Downloads</p></th>

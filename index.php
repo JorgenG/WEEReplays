@@ -9,8 +9,7 @@
     }	
     include('includes/constants.php');
     include('includes/functions.php'); 
-    include('includes/sessionhandler.php');
-    include('includes/db.php');    
+    include('includes/sessionhandler.php'); 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">

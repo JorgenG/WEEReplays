@@ -10,9 +10,13 @@
         {
             echo "
                 <form name='login' method='post' action='index.php?page=login'>
-                <p id='logintext'><strong>User: <input class='textinput' type='text' name='username'>
-                Pass: <input class='textinput' type='password' name='password'></strong>  
-                <input id='loginbutton' type='submit' value='Login' name='submit'></p>
+                    <p id='logintext'>
+                        <strong>
+                            User: <input class='textinput' type='text' name='username'>
+                            Pass: <input class='textinput' type='password' name='password'>
+                        </strong>  
+                    <input id='loginbutton' type='submit' value='Login' name='submit'>
+                    </p>
                 </form>";
         }
     ?>

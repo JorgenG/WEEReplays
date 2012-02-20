@@ -1,7 +1,7 @@
-html, body, p, a, h1, h2, h3, h4, h5, h6, ol, ul, li, pre, code, address,
+html, body, p, h1, h2, h3, h4, h5, h6, ol, ul, li, pre, code, address,
 variable, form, fieldset, blockquote {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     font-family: arial;
     
 }
@@ -9,6 +9,10 @@ variable, form, fieldset, blockquote {
 html, body, p, ol, ul, li, pre, code, address,
 variable, form, fieldset, blockquote {
     font-size: 14px;
+}
+
+html {
+    background: #444;
 }
 
 ol {
@@ -21,10 +25,6 @@ ul {
     list-style:square;
 }
 
-html {
-    overflow-y: scroll;
-}
-
 img {
     border: 0;
 }
@@ -34,7 +34,6 @@ body {
     margin: 0px;
     /*background-image: url(img/bg3.png);*/
     background-repeat: repeat;
-    background-color: #222;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -73,7 +72,7 @@ div.visiblediv {
 #header {	
     margin-top: 10px;
     height: 100px;
-    background:url('img/testbg3.jpg') #220000;
+    background:url('img/testbg3.jpg');
     margin-bottom: 0px;
     width: 958px;
 }
@@ -99,6 +98,57 @@ div.visiblediv {
     border-top: none;
     float: left;
     width: 958px;
+    text-shadow: 0 1px 0 #fff;
+    background: #ddd;
+    -moz-box-shadow: 0 0 16px #222;
+}
+
+#replaytable,
+#replayinfo,
+#addcomment,
+#registerform,
+.comment,
+#addreplayform{
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #bbb;
+    box-shadow: 0 0 4px #bbb;
+    margin-top: 20px;
+    margin-left: 20px;    
+    border-radius: 8px;    
+}
+
+#registerform {
+    width: 350px;
+    
+}
+
+#content h2 {
+    margin: 0;
+    padding: 1em .75em 0 .75em;
+    -background: -moz-linear-gradient(top,#fff,#ccc);
+    border-bottom: 1px solid #bbb;
+}
+
+#content p {
+    margin: 0;
+    padding: 1em 1em 0 1em;
+}
+
+#replaytable * {
+    border-collapse: collapse;
+}
+
+.replayrow:nth-child(4n) {
+    background: #fec;
+}
+#addcomment {
+    padding: 1em 2em;
+}
+.commentheader .commentheader {
+    color: #069;
+    border-bottom: 1px solid #bbb;
+    text-shadow: 0 1px 6px #7cf;
 }
 
 #user {
@@ -110,6 +160,13 @@ div.visiblediv {
     float: right;
     height: 35px;
     width: 300px;
+}
+
+#changepassword {
+    border: 1px solid #000;
+    width: 400px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 #footer {
@@ -124,31 +181,43 @@ div.visiblediv {
 #footer p{
     text-align: center;
     color: #FFF;
+    clear: both;
 }
 
 #replaytable {
-    padding: 1em;
-    margin: 1em;
-    width: 902px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 915px;
     border-radius: 8px;
 }
 
-h2 {
-    margin: 0;
-    padding: 1em .75em 0 .75em;
-    -background: -moz-linear-gradient(top,#fff,#ccc);
-    border-bottom: 1px solid #bbb;
+div.comment {
+    border: 1px solid #000;
+    width: 700px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
 }
 
-div.pagecontentbox {
-    padding: 1em;   
-    margin: 1em;
+#replayinfo {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 700px;
     border-radius: 8px;
-    width: 700px; 
-    background: #fff !important;
-    border: none !important;
-    border-bottom: 1px solid #bbb !important;
-    box-shadow: 0 0 4px #bbb;
+}
+
+#addcomment {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 700px;
+    border-radius: 8px;
 }
 
 /************************
@@ -164,12 +233,12 @@ div.pagecontentbox {
     white-space: nowrap;
 }
 
-#nav ul li{
+#nav li {
     display: inline;
     margin: 0 3px;
     margin-bottom: 10px;
     position: relative;
-    padding-right: 0.5em;
+    padding-right: 1em;
     text-shadow: 0 1px 0 #000;
 }
 
@@ -182,9 +251,9 @@ div.pagecontentbox {
 }
 
 #nav ul a#current{
-    border-color: #FFF;
     border-bottom: 11px solid;
     color: #EEE;
+    border-color: #ddd;
 }
 
 #nav ul a:hover{
@@ -194,15 +263,22 @@ div.pagecontentbox {
     opacity: 0.4;
 }
 
+#nav li a:hover {
+    color: #fea;
+}
+
 
 /**************************
  * PARAGRAPH SETTINGS     *
  **************************/
 p {
-    margin-bottom: 1em;
-    display: block;
+    margin-left: 0px;
     color: #222;
-    font-size: 1em;
+    font-size: 14px;
+}
+
+p.paragraphtext {
+    margin-bottom: 10px;
 }
 
 p.loginerror {
@@ -210,16 +286,6 @@ p.loginerror {
     font-style: italic;
 }
 
-p.tablecell {
-    margin: 0px;
-    padding: 0px;
-}
-
-
-
-/**
- * PAGINATION
- */
 p.lastpagelinks {
     text-align: right;
 }
@@ -232,10 +298,24 @@ p.nextpagelinks {
     text-align: left;
 }
 
-p.replayheader, p.commentheader {
+p.replayheader {
     font-weight: bolder;
-    font-size: 1.1em;
+    font-size: 16px;
     text-align: right;
+}
+
+p.commentheader {
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+p.commenttext {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
 #logintext {
@@ -275,24 +355,13 @@ td.forminput {
     text-align: left;
 }
 
-#replayinfo td a {
-    margin-bottom: 0em;
-}
-
-table {
-    
-}
-
-#replaytable * {
-    border-collapse: collapse;
-}
-.replayrow:nth-child(4n) {
-    background: #EEE;
-}
-
 table.replaydatatable td {
     vertical-align: top;
     word-break: break-all;
+}
+
+table.replaydatatable p {
+    text-align: left;
 }
 
 #NATO {
@@ -301,6 +370,12 @@ table.replaydatatable td {
 
 #PACT {
     color: red;
+}
+
+table.changepasstable {
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 8px;
 }
 
 /**************************

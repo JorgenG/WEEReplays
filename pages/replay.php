@@ -27,7 +27,7 @@
         
         $pageData = "<h2>Replay information for replay ID: " . $data['replayId'] . 
                 "</h2>
-                <div id='replayinfo'>
+                <div class='pagecontentbox' id='replayinfo'>
                 <table class='replaydatatable'>
                     <tr>
                         <th width='150'>
@@ -149,7 +149,7 @@
         else
         {
             echo "  
-                    <div id='addcomment'>                        
+                    <div class='pagecontentbox'>                        
                             <table>
                                 <tr>
                                     <td>You must be logged in to add a comment.</td>
@@ -163,7 +163,7 @@
         
         while($line = mysql_fetch_array($result))
         {
-            $commentData = "<div class='comment'>
+            $commentData = "<div class='pagecontentbox'>
                             <table class='commenttable'>
                                 <tr>
                                     <td class='commentheader'>

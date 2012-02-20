@@ -1,6 +1,7 @@
 <?php
     $changePasswordForm = "
         <h2>Configure user settings</h2>
+        <div class='pagecontentbox'>
         <form action='index.php?page=user' method=post enctype='multipart/form-data'>
             <table class='changepasstable'>
 
@@ -38,6 +39,6 @@
         $changePasswordForm .= "</td>
                 </tr>
             </table>
-        </form>        ";
+        </form></div>        ";
     echo $changePasswordForm;
 ?>

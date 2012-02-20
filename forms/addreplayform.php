@@ -1,6 +1,6 @@
 <?php
 echo "  <h2>Enter information for replay</h2>
-    <div id='addreplayform'>
+    <div class='pagecontentbox' id='addreplayform'>
     <form action='index.php?page=upload' method=post enctype='multipart/form-data'>
         <table class='registertable'>
             

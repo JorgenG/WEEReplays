@@ -1,6 +1,6 @@
 <?php
 
-    echo "  <div id='addcomment'>
+    echo "  <div class='pagecontentbox' id='addcomment'>
                         <form action='index.php?page=replay&id=". $_GET['id'] ."' method=post enctype='multipart/form-data'>
                             <table>
                                 <tr>

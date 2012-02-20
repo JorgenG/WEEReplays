@@ -1,6 +1,7 @@
 <?php   
     global $error;
     echo "  <h2>Register new user:</h2>
+            <div class='pagecontentbox' id='registerform'>
             <form name='register' method='post' action='index.php?page=register'>
                 <table class='registertable'>
                     <tr>
