@@ -93,6 +93,23 @@ echo "  <h2>Enter information for replay</h2>
             </tr>
             <tr>
                 <td class='formlabel' align='right'>
+                    <label for='mode'>Gameversion:</label>
+                </td>
+                <td class='forminput'>
+                    <select name='gameversion'>";
+    
+    $versionsResult = getGameversions();
+    
+    while($version = mysql_fetch_array($versionsResult))
+    {
+        echo "<option value='" . $version['gameversionId'] . "'>" . $version['gameversionName'] . "</option>";
+    }
+    
+    echo           "</select>
+                </td>
+            </tr>
+            <tr>
+                <td class='formlabel' align='right'>
                     
                 </td>
                 <td class='forminput'>

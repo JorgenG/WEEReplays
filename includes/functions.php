@@ -62,7 +62,16 @@
         return $modes;
     }
     
-    function addReplay($title, $description, $factions, $nrOfPlayers, $map, $mode, $data) 
+    function getGameversions()
+    {
+        include('includes/db.php');
+        
+        $query = "select * from Gameversions";
+        $versions = mysql_query($query) or die(mysql_error());
+        return $versions;
+    }
+    
+    function addReplay($title, $gameversion, $description, $factions, $nrOfPlayers, $map, $mode, $data) 
     {
         include('includes/db.php');
         
@@ -99,7 +108,7 @@
         
         $dateformat = "Y-m-d H:i:s";
         
-        $query = "insert into Replays values('', '" . $mode . "', '" . $_SESSION['userid'] . 
+        $query = "insert into Replays values('', '" . $gameversion ."', '" . $mode . "', '" . $_SESSION['userid'] . 
                 "', '" . $map . "', '" . mysql_real_escape_string($title) . "', '" . mysql_real_escape_string($description) . "', '" .
                 $factionTeam1 . "', '" . $factionTeam2 . "', '" . $nrOfPlayersTeam1 . "', '" .
                 $nrOfPlayersTeam2 . "', '" . $sqldata . "', '" . date($dateformat) . "', '0', '0')";
@@ -166,6 +175,7 @@
         
         $query = "select 
                     replayId, 
+                    gameversionName,
                     gameModeName, 
                     mapName, 
                     username,  
@@ -174,17 +184,23 @@
                     factionTeam1,
                     factionTeam2,
                     uploadDate,
+                    AVG(rating) as average,
+                    COUNT(ratingId) as ratings,
                     downloadCounter
                 from 
-                    Replays, 
+                    Replays left join Ratings on Replays_replayId = replayId,  
                     Users, 
                     GameModes, 
-                    Maps
+                    Maps,
+                    Gameversions
                 where
-                    Users_userId = userId AND
+                    Replays.Users_userId = userId AND
                     GameModes_gameModeId = gameModeId AND
+                    Gameversions_gameversionId = gameversionId AND
                     Maps_mapId = mapId AND
-                    replayId = " . mysql_real_escape_string($replayId);
+                    replayId = " . mysql_real_escape_string($replayId) . 
+                " group by
+                    replayId";
         $result = mysql_query($query) or die(mysql_error());
         return $result;        
     }
@@ -256,6 +272,7 @@
         
         $query = "select 
                     replayId, 
+                    gameversionName,
                     gameModeName, 
                     mapName, 
                     username,  
@@ -272,12 +289,14 @@
                     Replays left join Ratings on Replays_replayId = replayId, 
                     Users, 
                     GameModes, 
-                    Maps
+                    Maps,
+                    Gameversions
                 where
                     Replays.Users_userId = Users.userId AND
                     GameModes_gameModeId = gameModeId AND
                     Maps_mapId = mapId AND
-                    isDeleted = 0
+                    isDeleted = 0 AND
+                    Gameversions_gameversionId = gameversionId
                 group by
                     replayId
                 order by

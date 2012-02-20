@@ -54,6 +54,24 @@
         $pageData .= "</p></td>
                     </tr>
                     <tr>
+                        <td class='replayheadercell'>
+                            <p class='replayheader'>Gameversion:</p>
+                        </td>
+                        <td colspan='2' class='replaycolumncell'><p class='replaytext'>";
+        $pageData .= $data['gameversionName'];
+                        
+        $pageData .= "</p></td>
+                    </tr>
+                    <tr>
+                        <td class='replayheadercell'>
+                            <p class='replayheader'>Rating:</p>
+                        </td>
+                        <td colspan='2' class='replaycolumncell'><p class='replaytext'>";
+        $pageData .= round($data['average'] * 10) / 10 . " (". $data['ratings'];
+                        
+        $pageData .= ")</p></td>
+                    </tr>
+                    <tr>
                         <td>
                         <p class='replayheader'>Uploaded by:</p>
                         </td>

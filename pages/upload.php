@@ -14,13 +14,14 @@
             $nrOfPlayers = $_POST['nrOfPlayers'];
             $map = $_POST['map'];
             $mode = $_POST['mode'];
+            $gameversion = $_POST['gameversion'];
             
             $filesize = filesize($_FILES['file']['tmp_name']);
             $tempfile = fopen($_FILES["file"]["tmp_name"], 'r');
             $data = fread($tempfile, $filesize);
             fclose($tempfile); 
             
-            addReplay($title, $description, $factions, $nrOfPlayers, $map, $mode, $data);
+            addReplay($title, $gameversion, $description, $factions, $nrOfPlayers, $map, $mode, $data);
             echo"<h2>Upload successful</h2>";
         } 
     } 
