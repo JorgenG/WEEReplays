@@ -32,9 +32,7 @@ img {
 body {
     text-align: center;
     margin: 0px;
-    /*background-image: url(img/bg3.png);*/
-    background-repeat: repeat;
-    background-color: #222;
+    background-color: #222228;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -73,7 +71,7 @@ div.visiblediv {
 #header {	
     margin-top: 10px;
     height: 100px;
-    background:url('img/testbg3.jpg') #220000;
+    background:url('img/banner.jpg') #220000;
     margin-bottom: 0px;
     width: 958px;
 }
@@ -232,16 +230,20 @@ p.nextpagelinks {
     text-align: left;
 }
 
-p.replayheader, p.commentheader {
+p.replayheader, p.dateheader {
     font-weight: bolder;
     font-size: 1.1em;
     text-align: right;
+}
+p.postedbyheader {
+    font-weight: bolder;
+    font-size: 1.1em;
+    text-align: left;
 }
 
 table p {
     margin: 0px;
 }
-
 #logintext {
     font-size: 11px;
     margin-top: 5px;
@@ -297,6 +299,10 @@ table {
 table.replaydatatable td {
     vertical-align: top;
     word-break: break-all;
+}
+
+table.commenttable {
+    width: 690px;
 }
 
 #NATO {

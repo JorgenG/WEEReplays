@@ -198,14 +198,14 @@
             $commentData = "<div class='pagecontentbox'>
                             <table class='commenttable'>
                                 <tr>
-                                    <td class='commentheader'>
-                                        <p class='commentheader'>
-                                            Posted by ". $line['username'] .", ". $line['date'] .
+                                    <td>
+                                        <p class='postedbyheader'>
+                                            Posted by ". $line['username'] .
                                         "</p>
                                     </td>
-                                    <td>
-                                        
-                                    </td>
+                                    <td><p class='dateheader'>Date: "
+                                        . $line['date'] .
+                                    "</p></td>
                                 </tr>
                                 <tr class='commentlabel'>
                                     <td class='commentdescription' colspan='2'>
