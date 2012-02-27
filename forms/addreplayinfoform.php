@@ -1,4 +1,5 @@
 <?php
+
 echo "  <h2>Enter information for replay</h2>
     <div class='pagecontentbox' id='addreplayform'>
     <form action='index.php?page=upload' method=post enctype='multipart/form-data'>
@@ -18,14 +19,6 @@ echo "  <h2>Enter information for replay</h2>
                 </td>
                 <td class='forminput'>
                     <textarea name='description' rows='5' cols='40'></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td class='formlabel' align='right'>
-                    <label for='file'>Select file:</label>
-                </td>
-                <td class='forminput'>
-                    <input type='file' name='file'/>
                 </td>
             </tr>
             <tr>
@@ -121,6 +114,5 @@ echo "  <h2>Enter information for replay</h2>
         <br />
 
         </form>
-        <p class='hometext'>Replays are saved in \"C:\Users\Username\Saved Games\EugenSystems\Wargame\"</p>
     </div>";
 ?>

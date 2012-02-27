@@ -15,12 +15,12 @@
                 <th width='30'><p class='tableheader'>ID</p></th>
                 <th width='250'><p class='tableheader'>Title</p></th>
                 <th width='120'><p class='tableheader'>Uploaded by</p></th>
-                <th width='140'><p class='tableheader'>Map</p></th>
+                <th width='120'><p class='tableheader'>Map</p></th>
                 <th width='90'><p class='tableheader'>Mode</p></th>
-                <th width='60'><p class='tableheader'>Version</p></th>
+                <th width='120'><p class='tableheader'>Version</p></th>
                 <th width='60'><p class='tableheader'>Rating</p></th>
                 <th width='60'><p class='tableheader'>Info</p></th>
-                <th width='60'><p class='tableheader'>Downloads</p></th>
+                <th width='30'><p class='tableheader'>DL's</p></th>
             </tr>";
     $result = getReplaysPage($fromentry);
     $nrOfReplays = countReplays();

@@ -5,7 +5,7 @@
     } 
     else 
     {
-            $page = "home";
+            $page = "news";
     }	
     include('includes/constants.php');
     include('includes/functions.php'); 
@@ -16,7 +16,7 @@
 <html>
     
     <head>
-        <link rel="stylesheet" type="text/css" href="weereplays.css?version=1">
+        <link rel="stylesheet" type="text/css" href="weereplays.css?version=2">
         <link REL="SHORTCUT ICON" HREF="favicon.ico">
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Wargame: European Escalation replays</title>

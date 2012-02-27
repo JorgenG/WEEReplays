@@ -427,4 +427,13 @@
         mysql_query($query);
     }
     
+    function getFrontpageNews()
+    {
+        include('includes/db.php');
+        
+        $query = "SELECT newsId, title, ingress, date, username FROM News, Users WHERE Users_userId = userId ORDER BY date DESC LIMIT 0, 10";
+        $result = mysql_query($query) or die(mysql_error());
+        return $result;
+    }
+    
 ?>

@@ -32,7 +32,7 @@ img {
 body {
     text-align: center;
     margin: 0px;
-    background-color: #222228;
+    background-color: #151915;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -71,7 +71,7 @@ div.visiblediv {
 #header {	
     margin-top: 10px;
     height: 100px;
-    background:url('img/banner.jpg') #220000;
+    background:url('img/bannernew.jpg') #220000;
     margin-bottom: 0px;
     width: 958px;
 }
@@ -232,6 +232,7 @@ p.nextpagelinks {
 
 p.replayheader, p.dateheader {
     font-weight: bolder;
+    font-style: italic;
     font-size: 1.1em;
     text-align: right;
 }
@@ -289,6 +290,10 @@ table {
     
 }
 
+table.newstable a {
+    text-align: right;
+}
+
 #replaytable * {
     border-collapse: collapse;
 }
@@ -302,6 +307,10 @@ table.replaydatatable td {
 }
 
 table.commenttable {
+    width: 690px;
+}
+
+table.newstable {
     width: 690px;
 }
 
