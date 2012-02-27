@@ -9,38 +9,18 @@
     }    
     
     echo "  <h2>Displaying replays</h2>
-        <div class='pagecontentbox' id='replaytable'>
-            <table>
-            <tr>                
-                <th width='30'><p class='tableheader'>ID</p></th>
-                <th width='250'><p class='tableheader'>Title</p></th>
-                <th width='120'><p class='tableheader'>Uploaded by</p></th>
-                <th width='120'><p class='tableheader'>Map</p></th>
-                <th width='90'><p class='tableheader'>Mode</p></th>
-                <th width='120'><p class='tableheader'>Version</p></th>
-                <th width='60'><p class='tableheader'>Rating</p></th>
-                <th width='60'><p class='tableheader'>Info</p></th>
-                <th width='30'><p class='tableheader'>DL's</p></th>
-            </tr>";
+        <div class='pagecontentbox'>
+            <ul class='replay_index'>
+            ";
     $result = getReplaysPage($fromentry);
     $nrOfReplays = countReplays();
     
     while($line = mysql_fetch_array($result))
     {
-        echo "<tr class='replayrow'>" .
-                "<td class='replaystd'><p class='tablecell'>" . $line['replayId'] . "</p></td>" .
-                "<td class='replaystd'><p class='tablecell'>" . $line['title'] . "</p></td>" .
-                "<td class='replaystd'><p class='tablecell'>" . $line['username'] . "</p></td>" .
-                "<td class='replaystd'><p class='tablecell'>" . $line['mapName'] . "</p></td>" .
-                "<td class='replaystd'><p class='tablecell'>" . $line['nrOfPlayersTeam1'] . "v" . $line['nrOfPlayersTeam2'] . " - " . $line['gameModeName'] . "</p></td>" .
-                "<td class='replaystd'><p class='tablecell'>" . $line['gameversionName'] . "</p></td>" .
-                "<td class='replaystd'><p class='tablecell'>" . round($line['average'] * 10) / 10 . " (". $line['ratings']. ")</p></td>" .
-                "<td class='replaystd'><a href='index.php?page=replay&id=" . $line['replayId'] . "'>Details</a></td>" .
-                "<td class='replaystd'><p class='tablecell'>" . $line['downloadCounter'] . "</a></td>" .
-             "<tr>";
+        echo "<li class='replay_item'><a class='replay_link' href='index.php?page=replay&id=" . $line['replayId'] . "'></a></li>";
     }
 
-    echo "  </table>";
+    echo "</ul>";
     echo "";
     
     $browseReplaysCounter = 0;

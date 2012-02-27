@@ -341,3 +341,27 @@ textarea {
 input.registerforminput {
     width: 140px;
 }
+
+ul.replay_index {
+    margin: 0px;
+}
+
+li.replay_item {
+    list-style-type: none;
+    margin: 0px;
+    height: 80px;
+    width: 700px;
+    background-color: #BBB;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+li.replay_item:hover {
+    background-color: #EEE;
+}
+
+a.replay_link {
+    height: 80px;
+    width: 700px;
+    display: block;
+}
